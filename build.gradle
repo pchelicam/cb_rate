@@ -1,0 +1,54 @@
+plugins {
+    id 'java'
+    id 'maven-publish'
+}
+
+group = 'ru.pchelicam.cbrf'
+version = '1.0'
+
+repositories {
+    mavenCentral()
+}
+
+ext {
+    springVersion = '4.3.30.RELEASE'
+    junitVersion = '4.13.1'
+}
+
+dependencies {
+    implementation "org.springframework:spring-core:${springVersion}"
+    implementation "org.springframework:spring-context:${springVersion}"
+    implementation "org.springframework:spring-web:${springVersion}"
+    implementation "org.springframework:spring-remoting:2.0.8"
+
+    testImplementation "org.springframework:spring-test:${springVersion}"
+    testImplementation "junit:junit:${junitVersion}"
+}
+
+jar {
+    manifest {
+        attributes('Main-Class': 'ru.pchelicam.cbrf.Application')
+    }
+}
+
+task fatJar(type: Jar) {
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+    manifest {
+        attributes 'Main-Class': 'ru.pchelicam.cbrf.Application'
+    }
+    archivesBaseName = "${project.name}-jar-with-dependencies"
+    from { configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) } }
+    with jar
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            from components.java
+        }
+    }
+}
+
+test {
+    useJUnit()
+}
