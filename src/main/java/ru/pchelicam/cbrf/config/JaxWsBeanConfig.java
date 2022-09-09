@@ -12,6 +12,7 @@ import java.net.URL;
 @Configuration
 @ComponentScan("ru.pchelicam.cbrf")
 public class JaxWsBeanConfig {
+
     private static final String wsdlUrl = "http://www.cbr.ru/DailyInfoWebServ/DailyInfo.asmx?WSDL";
     private static final String namespaceUri = "http://web.cbr.ru/";
     private static final String serviceName = "DailyInfo";
@@ -27,4 +28,5 @@ public class JaxWsBeanConfig {
         ret.setPortName(portName);
         return ret;
     }
+
 }
