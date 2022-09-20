@@ -1,4 +1,4 @@
-## cb_ref - инструмент для считывания ставки рефинансирования с помощью веб-службы http://www.cbr.ru/DailyInfoWebServ/DailyInfo.asmx
+## cb_rate - инструмент для считывания ставки рефинансирования с помощью веб-службы http://www.cbr.ru/DailyInfoWebServ/DailyInfo.asmx
 
 ### Использование инструмента через сохранение в локальный maven репозиторий
 
