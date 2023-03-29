@@ -33,3 +33,8 @@
               ```
         * после чего можно использовать бин `CbRateService` для получения ставки рефинансирования и даты изменения
           ставки. Инициализировать бин можно с помощью аннотации `@Autowired`.
+        * если cb_rate подключается внутри приложения со своим Spring Context, следует инициализировать контекст cb_rate и из него получить bean CbRateService:
+          ```
+          ApplicationContext context = new AnnotationConfigApplicationContext(JaxWsBeanConfig.class);
+          CbRateService cbRateService = context.getBean(CbRateService.class);
+          ```
