@@ -3,6 +3,7 @@ package ru.pchelicam.cbrf.config;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.remoting.jaxws.JaxWsPortProxyFactoryBean;
 import ru.pchelicam.cbrf.services.DailyInfoSoap;
 
@@ -18,6 +19,7 @@ public class JaxWsBeanConfig {
     private static final String serviceName = "DailyInfo";
     private static final String portName = "DailyInfoSoap";
 
+    @Lazy
     @Bean
     public JaxWsPortProxyFactoryBean dailyInfoData() throws MalformedURLException {
         JaxWsPortProxyFactoryBean ret = new JaxWsPortProxyFactoryBean();
